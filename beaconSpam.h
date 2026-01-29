@@ -17,7 +17,6 @@ class beaconSpam {
     void initDevice();          
     void executeScan();         
     
-    // Now this is static so handleNavigate can call it directly
     static void renderInterface();     
     
     static void handleNavigateUp();    

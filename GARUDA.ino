@@ -6,7 +6,6 @@
 #include "inputnodes.h"
 #include "beaconSpam.h"
 
-// --- Global Objects ---
 const char* menuItems[] = { "Beacon Attack", "Deauth Attack" };
 const int totalItems = sizeof(menuItems) / sizeof(menuItems[0]);
 
@@ -16,24 +15,20 @@ OneButton buttonUp(BUTTON_UP, true);
 OneButton buttonDown(BUTTON_DOWN, true);
 OneButton buttonSelect(BUTTON_SELECT, true);
 
-// --- State Management ---
 int currentIndex = 0;    
 int topIndex = 0;        
 bool isInAttackMode = false; 
 
 beaconSpam* spammer = nullptr;
 
-// --- 1. Interrupt Service Routines (ISRs) ---
-// These MUST have IRAM_ATTR to run from RAM for speed/stability
+
 void IRAM_ATTR checkUpTicks()   { buttonUp.tick(); }
 void IRAM_ATTR checkDownTicks() { buttonDown.tick(); }
 void IRAM_ATTR checkSelTicks()  { buttonSelect.tick(); }
 
-// --- Forward Declarations ---
 void drawMenu();
 void setupMainMenuButtons();
 
-// ------------------ Actions ------------------
 
 void exitAttackMode() {
     Serial.println(F("Exiting to Main Menu..."));
@@ -46,7 +41,6 @@ void actionItem1() {
     Serial.println(F("Starting Beacon Attack..."));
     isInAttackMode = true; 
 
-    // Reassign buttons for Attack Mode
     buttonUp.attachClick(NULL);
     buttonDown.attachClick(NULL);
     buttonSelect.attachClick(NULL);
@@ -67,7 +61,6 @@ void performAction(int index) {
   else Serial.println(F("Not Implemented"));
 }
 
-// ------------------ UI Drawing ------------------
 
 void drawMenu() {
   display.clearDisplay();
@@ -93,7 +86,6 @@ void drawMenu() {
   display.display();
 }
 
-// ------------------ Menu Button Handlers ------------------
 
 void upPressed() {
   if (currentIndex > 0) { currentIndex--; if (currentIndex < topIndex) topIndex--; }
@@ -117,8 +109,7 @@ void setup() {
     Wire.begin(DISPLAY_SDA, DISPLAY_SCK);
     display.begin(SSD1306_SWITCHCAPVCC, OLED_ADDRESS);
 
-    // --- 2. Initialize Interrupts ---
-    // We attach the interrupt to the CHANGE mode so it catches both press and release
+
     pinMode(BUTTON_UP, INPUT_PULLUP);
     pinMode(BUTTON_DOWN, INPUT_PULLUP);
     pinMode(BUTTON_SELECT, INPUT_PULLUP);
@@ -132,10 +123,9 @@ void setup() {
 }
 
 void loop() {
-    // We still keep these here to handle the internal timing/callback logic
-    // but the interrupts will make sure transitions are caught instantly.
+
     buttonUp.tick();
     buttonDown.tick();
     buttonSelect.tick();
-    yield(); // Keep WiFi stack happy
+    yield(); 
 }

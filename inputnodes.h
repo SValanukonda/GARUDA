@@ -1,16 +1,13 @@
 #ifndef INPUTNODES_H
 #define INPUTNODES_H
 
-// Button pins
 #define BUTTON_UP     D5
 #define BUTTON_DOWN   D6
 #define BUTTON_SELECT D7
 
-// I2C pins for OLED
 #define DISPLAY_SDA D2
 #define DISPLAY_SCK D1
 
-// OLED I2C address (hardcoded)
 #define OLED_ADDRESS 0x3C
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
