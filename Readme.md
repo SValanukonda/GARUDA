@@ -7,12 +7,29 @@
 
 **GARUDA** is a portable, standalone security research platform that fuses custom hardware with bare-metal software control. Built on the **ESP8266** architecture, it serves as a tactical gateway for multi-vector exploits, ranging from wireless reconnaissance to physical peripheral manipulation.
 
+
+![GARUDA](./Garuda.jpeg)
+
 ---
 
 ## 🛑 LEGAL DISCLAIMER
 > **WARNING:** Project GARUDA is intended for **educational purposes and authorized security auditing only.** Unauthorized use against networks or devices without explicit permission is illegal. The developer assumes no liability for any damage or legal consequences caused by the misuse of this framework. **Always operate within ethical and legal boundaries.**
 
 ---
+
+---
+
+## ⚡ Current Capabilities
+### **Wireless Auditing: 802.11 Beacon Spam**
+The initial module focuses on saturating the 2.4GHz spectrum to test client-side resilience and network list handling.
+    [Blog link](https://svalanukonda.github.io/blogsWebsite/posts/wifi_beacon_attack_the_garuda_project/)
+* **SSID Virtualization:** Clones a target network into 10+ unique, invisible variations.
+* **Invisible Padding:** Uses trailing space injection to force unique hashes while appearing identical to the end-user.
+* **BSSID Spoofing:** Dynamic MAC address (BSSID) randomization for each clone.
+* **Unified Control:** Click to launch the attack; long-press (800ms) to cancel and return to safety.
+
+---
+
 
 ## 🏗️ Framework Architecture
 GARUDA is a unified ecosystem where custom hardware meets low-level exploit logic. It is designed to be completely autonomous, requiring no external computer once deployed in the field.
@@ -40,18 +57,6 @@ To build the GARUDA framework, wire your breadboard according to the following G
 
 
 
----
-
-## ⚡ Current Capabilities
-### **Wireless Auditing: 802.11 Beacon Spam**
-The initial module focuses on saturating the 2.4GHz spectrum to test client-side resilience and network list handling.
-
-* **SSID Virtualization:** Clones a target network into 10+ unique, invisible variations.
-* **Invisible Padding:** Uses trailing space injection to force unique hashes while appearing identical to the end-user.
-* **BSSID Spoofing:** Dynamic MAC address (BSSID) randomization for each clone.
-* **Unified Control:** Click to launch the attack; long-press (800ms) to cancel and return to safety.
-
----
 
 ## 🗺️ Multi-Vector Exploit Roadmap
 GARUDA is an evolving platform designed to expand into a universal security multi-tool:
